@@ -1,0 +1,57 @@
+<div class="row col-6 card shadow mx-auto mt-3">
+  <form [formGroup]="formSerie" (ngSubmit)="onSubmitSerieForm()" class="my-3">
+
+    <div class="mb-3">
+      <label for="name">Nom</label>
+      <input
+        id="name"
+        class="form-control"
+        formControlName="name"
+        [(ngModel)]="serie.name">
+    </div>
+    <div class="mb-3">
+      <label for="name">Nombre de saisons</label>
+      <input
+        id="nbsaison"
+        class="form-control"
+        formControlName="nbsaison"
+        [(ngModel)]="serie.numberOfSaisons">
+    </div>
+
+    <div class="mb-3">
+      <label for="dateFirstSaison">Date première diffusion</label>
+      <input id="dateFirstSaison"
+             type="date"
+             class="form-control"
+             formControlName="dateFirstSaison"
+             [(ngModel)]="serie.dateFirstSaison">
+    </div>
+
+    <div class="mb-3">
+      <label for="name">Description</label>
+      <input
+        id="description"
+        formControlName="description"
+        class="form-control"
+        [(ngModel)]="serie.description">
+    </div>
+
+    <div class="mb-3">
+      <label for="name">Critiques</label>
+      <input
+        id="review"
+        class="form-control"
+        formControlName="review"
+        [(ngModel)]="serie.review">
+    </div>
+    <button type="submit" class="d-grid col-4 mx-auto btn btn-dark" [disabled]="formSerie.invalid">
+      {{submitLabel}}
+    </button>
+  </form>
+  <a routerLink="/home" class="text-center text-dark mb-2">
+    RETOUR
+  </a>
+
+
+
+</div>

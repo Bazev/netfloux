@@ -1,0 +1,36 @@
+<div class="row col-6 card shadow mx-auto mt-3">
+  <form [formGroup]="formComment" (ngSubmit)="onSubmitCommentForm()" class="my-3">
+
+    <div class="mb-3">
+      <label for="author">Auteur</label>
+      <input
+        id="author"
+        class="form-control"
+        formControlName="author"
+        [(ngModel)]="comment.author">
+    </div>
+    <div class="mb-3">
+      <label for="content">Description</label>
+      <input
+        id="content"
+        formControlName="content"
+        class="form-control"
+        [(ngModel)]="comment.content">
+    </div>
+    <div class="mb-3">
+      <label for="date">Date</label>
+      <input
+        id="date"
+        type="date"
+        formControlName="date"
+        class="form-control"
+        [(ngModel)]="comment.date">
+    </div>
+    <button type="submit" class="d-grid col-4 mx-auto btn btn-dark" [disabled]="formComment.invalid">
+      {{submitLabel}}
+    </button>
+  </form>
+  <a routerLink="/home" class="text-center text-dark mb-2">
+    RETOUR
+  </a>
+</div>

@@ -1,0 +1,39 @@
+<div *ngIf="serie" class="px-4 py-3 text-center">
+  <h3 class="display-5 fw-bold">{{serie.name}}</h3>
+</div>
+
+<div *ngIf="serie" class="row col-6 card shadow mx-auto my-5 py-2">
+  <img src="{{serie.urlPicture}}">
+  <div class="card-body">
+    <p class="card-text">{{serie.numberOfSaisons}} saison(s) disponible(s)</p>
+    <div class="card-header">
+      Description
+    </div>
+    <p class="card-text">{{serie.description}}</p>
+    <p class="card-text">
+      <small class="text-muted">
+        Disponible depuis le  {{serie.dateFirstSaison | date:'longDate'}}
+      </small>
+    </p>
+    <div class="card-header">
+      Critiques
+    </div>
+    <div class="card">
+      <p class="card-text">{{serie.review}}</p>
+    </div>
+    <div class="card-header">
+      Commentaires
+    </div>
+    <div app-comments
+         *ngFor="let serie of serie.comments"
+         [author]="serie.author"
+         [content]="serie.content"
+         [date]="serie.date"
+    ></div>
+    <div class="d-flex justify-content-end">
+      <a routerLink="/series" class="btn btn-outline-dark mx-1">RETOUR</a>
+      <a [routerLink]="['/series', id, 'add']" class="btn btn-outline-dark mx-1">COMMENTER</a>
+    </div>
+
+  </div>
+</div>

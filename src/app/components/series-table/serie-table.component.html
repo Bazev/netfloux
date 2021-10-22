@@ -1,0 +1,18 @@
+<table class="table">
+  <thead class="table-dark">
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Date</th>
+    <th>Actions</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr app-serie-table-line
+      *ngFor="let serie of series"
+      [id]="serie.id"
+      [name]="serie.name"
+      [dateFirstSaison]="serie.dateFirstSaison">
+  </tr>
+  </tbody>
+</table>
