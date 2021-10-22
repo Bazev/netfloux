@@ -90,17 +90,9 @@ Si l'action prend tout le pas sur le reste, c'est bien parce que le show n'a str
     )
   }
 
-  addCom(comment: Comment, serie: Serie | undefined) :Promise<void> {
-    return new Promise<void>(
-      (res,rej) => {
-        const series = this.series.getValue();
-        for (let serie of series) {
-          if (serie.id === comment.id) {
-            serie.comments.unshift(comment)
-          }
-        }
-        res();
-      }
-    )
+  addCom(comment: Comment, serie: Serie) {
+    comment.id=serie.comments.length;
+    comment.date = new Date()
+    serie.comments.push(comment)
   }
 }

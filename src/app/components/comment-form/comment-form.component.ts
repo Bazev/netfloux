@@ -1,6 +1,8 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Comment} from "../../models/comment";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {Serie} from "../../models/serie";
+import {SerieService} from "../../services/serie/serie.service";
 
 @Component({
   selector: 'app-comment-form',
@@ -8,34 +10,26 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
   styleUrls: ['./comment-form.component.css']
 })
 export class CommentFormComponent implements OnInit {
-  @Input() submitLabel : string;
   @Output() formSubmitted : EventEmitter<Comment>
-  @Input() addComment : Comment | undefined;
+  @Input() serie : Serie;
   formComment : FormGroup;
   comment : Comment ;
 
-  constructor() {
-    this.submitLabel = '';
+  constructor(private serieService:SerieService) {
+    this.serie = new Serie('', new Date(), 0, '', '', '', [])
     this.formSubmitted = new EventEmitter<Comment>()
     this.formComment = new FormGroup({});
     this.comment = new Comment(new Date(), '','')
   }
 
   ngOnInit(): void {
-    if (this.addComment) {
-      this.comment = this.addComment
-    }
-    this.initForm();
-    if (this.addComment) {
-      this.comment = this.addComment;
-    }else {
-      this.comment = new Comment(new Date(), '', '')
-    }
+    this.initForm()
   }
 
   onSubmitCommentForm() : void {
     if (this.formComment.valid) {
-      this.formSubmitted.emit(this.comment)
+      this.serieService.addCom(this.formComment.value, this.serie)
+      this.formComment.reset()
     }
   }
 
@@ -54,13 +48,5 @@ export class CommentFormComponent implements OnInit {
         [Validators.required, Validators.minLength(10)]
       )
     );
-    this.formComment.addControl(
-      'date',
-      new FormControl(
-        null,
-        [Validators.required]
-      )
-    )
-
   }
 }

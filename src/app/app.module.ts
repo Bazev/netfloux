@@ -17,10 +17,10 @@ import { NewSerieViewComponent } from './views/new-serie-view/new-serie-view.com
 import { SerieFormComponent } from './components/serie-form/serie-form.component';
 import { EditSerieViewComponent } from './views/edit-serie-view/edit-serie-view.component';
 import { CommentsComponent } from './components/comments/comments.component';
-import { AddCommentViewComponent } from './views/add-comment-view/add-comment-view.component';
 import { CommentFormComponent } from './components/comment-form/comment-form.component';
 import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
+import { ErrorsFormComponent } from './components/errors-form/errors-form.component';
 registerLocaleData(localeFr);
 
 @NgModule({
@@ -37,8 +37,8 @@ registerLocaleData(localeFr);
     SerieFormComponent,
     EditSerieViewComponent,
     CommentsComponent,
-    AddCommentViewComponent,
     CommentFormComponent,
+    ErrorsFormComponent,
   ],
 
   imports: [

@@ -27,8 +27,10 @@ export class SingleSerieViewComponent implements OnInit {
           this.serie = foundSerie;
         }
       );
-
   }
+
+
+
 
 
 }
